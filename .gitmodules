@@ -1,3 +1,3 @@
-[submodule "danicoin"]
-	path = danicoin
-	url = https://kumig.it/kumitterer/danicoin.git
+[submodule "mecoin"]
+	path = mecoin
+	url = https://github.com/2pay/mecoin.git
