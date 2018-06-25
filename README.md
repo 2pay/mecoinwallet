@@ -1,23 +1,23 @@
-# Danicoin Wallet
+# Mecoin Wallet
 
 This is the graphical user interface for 
-[Danicoin](https://kumig.it/kumitterer/danicoin), the best cryptocurrency ever.
+[Mecoin](https://github.com/2pay/mecoin), the best cryptocurrency ever.
 
 ## Building
 
-There are currently no pre-built binaries available for Danicoin Wallet. To
+There are currently no pre-built binaries available for Mecoin Wallet. To
 build it on Ubuntu Linux, let's first install all dependencies:
 
 ```
 sudo apt install git build-essential cmake libboost-all-dev qt5-default
 ```
 
-The next step is to download the source code for Danicoin Wallet and Danicoin
+The next step is to download the source code for Mecoin Wallet and Mecoin
 itself:
 
 ```
-git clone https://kumig.it/kumitterer/danicoinwallet.git
-cd danicoinwallet
+git clone https://github.com/2pay/mecoinwallet.git
+cd mecoinwallet
 git submodule init
 git submodule update
 ```
@@ -35,23 +35,23 @@ When the build is finished, the only thing left to do is installing it to
 /usr/bin so you can easily run it from the terminal:
 
 ```
-sudo install danicoin /usr/bin/
+sudo install mecoin /usr/bin/
 ```
 
 ## Running
 
-Running Danicoin Wallet is as simple as it gets - just run it from your 
+Running Mecoin Wallet is as simple as it gets - just run it from your 
 terminal:
 
 ```
-danicoin
+mecoin
 ```
 
-It will use the ".danicoin" subdirectory of your user directory to store its
+It will use the ".mecoin" subdirectory of your user directory to store its
 data, including a full copy of the blockchain. If you want to change any of its
 settings, you can pass them as command line arguments. To find all available
 arguments, execute:
 
 ```
-danicoin --help
+mecoin --help
 ```
