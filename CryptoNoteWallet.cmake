@@ -1,4 +1,3 @@
-
-set(CN_PROJECT_NAME "danicoin")
-set(CN_CURRENCY_DISPLAY_NAME "Danicoin")
-set(CN_CURRENCY_TICKER "DANI")
+set(CN_PROJECT_NAME "mecoin")
+set(CN_CURRENCY_DISPLAY_NAME "Mecoin")
+set(CN_CURRENCY_TICKER "MEO")

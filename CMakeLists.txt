@@ -12,9 +12,9 @@ set(CRYPTONOTE_LIB cryptonote)
 
 include_directories(${CMAKE_BINARY_DIR}
     src
-    danicoin/external
-    danicoin/include
-    danicoin/src)
+    mecoin/external
+    mecoin/include
+    mecoin/src)
 
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5Widgets REQUIRED)
@@ -35,7 +35,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
 set(VERSION "")
-configure_file("danicoin/src/version.h.in" "version.h")
+configure_file("mecoin/src/version.h.in" "version.h")
 configure_file("src/CryptoNoteWalletConfig.h.in" "CryptoNoteWalletConfig.h")
 
 add_definitions(-DGIT_REVISION=\"${GIT_REVISION}\")
@@ -43,130 +43,130 @@ add_definitions(-DGIT_REVISION=\"${GIT_REVISION}\")
 set(CMAKE_AUTOMOC ON)
 
 set(CRYPTONOTE_SOURCES
-  danicoin/external/miniupnpc/connecthostport.c
-  danicoin/external/miniupnpc/igd_desc_parse.c
-  danicoin/external/miniupnpc/minisoap.c
-  danicoin/external/miniupnpc/miniupnpc.c
-  danicoin/external/miniupnpc/miniwget.c
-  danicoin/external/miniupnpc/minixml.c
-  danicoin/external/miniupnpc/portlistingparse.c
-  danicoin/external/miniupnpc/receivedata.c
-  danicoin/external/miniupnpc/upnpcommands.c
-  danicoin/external/miniupnpc/upnpreplyparse.c
-  danicoin/src/Common/Base58.cpp
-  danicoin/src/Common/CommandLine.cpp
-  danicoin/src/Common/Util.cpp
-  danicoin/src/Common/StringTools.cpp
-  danicoin/src/Common/JsonValue.cpp
-  danicoin/src/Common/ConsoleTools.cpp
-  danicoin/src/Common/MemoryInputStream.cpp
-  danicoin/src/Common/PathTools.cpp
-  danicoin/src/Common/StdInputStream.cpp
-  danicoin/src/Common/StdOutputStream.cpp
-  danicoin/src/Common/StreamTools.cpp
-  danicoin/src/Common/StringOutputStream.cpp
-  danicoin/src/Common/StringView.cpp
-  danicoin/src/Common/VectorOutputStream.cpp
-  danicoin/src/crypto/blake256.c
-  danicoin/src/crypto/chacha8.c
-  danicoin/src/crypto/crypto-ops-data.c
-  danicoin/src/crypto/crypto-ops.c
-  danicoin/src/crypto/crypto.cpp
-  danicoin/src/crypto/groestl.c
-  danicoin/src/crypto/hash-extra-blake.c
-  danicoin/src/crypto/hash-extra-groestl.c
-  danicoin/src/crypto/hash-extra-jh.c
-  danicoin/src/crypto/hash-extra-skein.c
-  danicoin/src/crypto/hash.c
-  danicoin/src/crypto/jh.c
-  danicoin/src/crypto/keccak.c
-  danicoin/src/crypto/oaes_lib.c
-  danicoin/src/crypto/random.c
-  danicoin/src/crypto/skein.c
-  danicoin/src/crypto/slow-hash.c
-  danicoin/src/crypto/slow-hash.cpp
-  danicoin/src/crypto/tree-hash.c
-  danicoin/src/CryptoNoteCore/BlockchainIndices.cpp
-  danicoin/src/CryptoNoteCore/BlockchainMessages.cpp
-  danicoin/src/CryptoNoteCore/BlockIndex.cpp
-  danicoin/src/CryptoNoteCore/CoreConfig.cpp
-  danicoin/src/CryptoNoteCore/CryptoNoteBasic.cpp
-  danicoin/src/CryptoNoteCore/CryptoNoteTools.cpp
-  danicoin/src/CryptoNoteCore/Currency.cpp
-  danicoin/src/CryptoNoteCore/MinerConfig.cpp
-  danicoin/src/CryptoNoteCore/Transaction.cpp
-  danicoin/src/CryptoNoteCore/Account.cpp
-  danicoin/src/CryptoNoteCore/Blockchain.cpp
-  danicoin/src/CryptoNoteCore/Checkpoints.cpp
-  danicoin/src/CryptoNoteCore/CryptoNoteBasicImpl.cpp
-  danicoin/src/CryptoNoteCore/Core.cpp
-  danicoin/src/CryptoNoteCore/CryptoNoteFormatUtils.cpp
-  danicoin/src/CryptoNoteCore/CryptoNoteSerialization.cpp
-  danicoin/src/CryptoNoteCore/Difficulty.cpp
-  danicoin/src/CryptoNoteCore/IBlock.cpp
-  danicoin/src/CryptoNoteCore/Miner.cpp
-  danicoin/src/CryptoNoteCore/TransactionExtra.cpp
-  danicoin/src/CryptoNoteCore/TransactionPool.cpp
-  danicoin/src/CryptoNoteCore/TransactionPrefixImpl.cpp
-  danicoin/src/CryptoNoteCore/TransactionUtils.cpp
-  danicoin/src/InProcessNode/InProcessNode.cpp
-  danicoin/src/InProcessNode/InProcessNodeErrors.cpp
-  danicoin/src/NodeRpcProxy/NodeErrors.cpp
-  danicoin/src/NodeRpcProxy/NodeRpcProxy.cpp
-  danicoin/src/P2p/NetNodeConfig.cpp
-  danicoin/src/Serialization/BinaryInputStreamSerializer.cpp
-  danicoin/src/Serialization/BinaryOutputStreamSerializer.cpp
-  danicoin/src/Serialization/JsonInputValueSerializer.cpp
-  danicoin/src/Serialization/JsonOutputStreamSerializer.cpp
-  danicoin/src/Serialization/KVBinaryInputStreamSerializer.cpp
-  danicoin/src/Serialization/KVBinaryOutputStreamSerializer.cpp
-  danicoin/src/Serialization/SerializationOverloads.cpp
-  danicoin/src/Transfers/BlockchainSynchronizer.cpp
-  danicoin/src/Transfers/SynchronizationState.cpp
-  danicoin/src/Transfers/TransfersConsumer.cpp
-  danicoin/src/Transfers/TransfersContainer.cpp
-  danicoin/src/Transfers/TransfersSubscription.cpp
-  danicoin/src/Transfers/TransfersSynchronizer.cpp
-  danicoin/src/Wallet/LegacyKeysImporter.cpp
-  danicoin/src/Wallet/WalletAsyncContextCounter.cpp
-  danicoin/src/Wallet/WalletErrors.cpp
-  danicoin/src/WalletLegacy/KeysStorage.cpp
-  danicoin/src/WalletLegacy/WalletLegacy.cpp
-  danicoin/src/WalletLegacy/WalletHelper.cpp
-  danicoin/src/WalletLegacy/WalletLegacySerializer.cpp
-  danicoin/src/WalletLegacy/WalletLegacySerialization.cpp
-  danicoin/src/WalletLegacy/WalletTransactionSender.cpp
-  danicoin/src/WalletLegacy/WalletUnconfirmedTransactions.cpp
-  danicoin/src/WalletLegacy/WalletUserTransactionsCache.cpp
-  danicoin/src/System/ContextGroup.cpp
-  danicoin/src/System/Event.cpp
-  danicoin/src/System/EventLock.cpp
-  danicoin/src/System/InterruptedException.cpp
-  danicoin/src/System/Ipv4Address.cpp
-  danicoin/src/System/TcpStream.cpp
-  danicoin/src/HTTP/HttpRequest.cpp
-  danicoin/src/HTTP/HttpParser.cpp
-  danicoin/src/HTTP/HttpParserErrorCodes.cpp
-  danicoin/src/HTTP/HttpResponse.cpp
-  danicoin/src/Rpc/HttpClient.cpp
-  danicoin/src/Rpc/JsonRpc.cpp
-  danicoin/src/P2p/NetNode.cpp
-  danicoin/src/P2p/LevinProtocol.cpp
-  danicoin/src/P2p/NetNodeConfig.cpp
-  danicoin/src/P2p/PeerListManager.cpp
-  danicoin/src/CryptoNoteProtocol/CryptoNoteProtocolHandler.cpp
-  danicoin/src/Logging/ILogger.cpp
-  danicoin/src/Logging/LoggerGroup.cpp
-  danicoin/src/Logging/CommonLogger.cpp
-  danicoin/src/Logging/LoggerManager.cpp
-  danicoin/src/Logging/FileLogger.cpp
-  danicoin/src/Logging/StreamLogger.cpp
-  danicoin/src/Logging/ConsoleLogger.cpp
-  danicoin/src/Logging/LoggerMessage.cpp
-  danicoin/src/Logging/LoggerRef.cpp
-  danicoin/src/BlockchainExplorer/BlockchainExplorer.cpp
-  danicoin/src/BlockchainExplorer/BlockchainExplorerDataBuilder.cpp
-  danicoin/src/BlockchainExplorer/BlockchainExplorerErrors.cpp
+  mecoin/external/miniupnpc/connecthostport.c
+  mecoin/external/miniupnpc/igd_desc_parse.c
+  mecoin/external/miniupnpc/minisoap.c
+  mecoin/external/miniupnpc/miniupnpc.c
+  mecoin/external/miniupnpc/miniwget.c
+  mecoin/external/miniupnpc/minixml.c
+  mecoin/external/miniupnpc/portlistingparse.c
+  mecoin/external/miniupnpc/receivedata.c
+  mecoin/external/miniupnpc/upnpcommands.c
+  mecoin/external/miniupnpc/upnpreplyparse.c
+  mecoin/src/Common/Base58.cpp
+  mecoin/src/Common/CommandLine.cpp
+  mecoin/src/Common/Util.cpp
+  mecoin/src/Common/StringTools.cpp
+  mecoin/src/Common/JsonValue.cpp
+  mecoin/src/Common/ConsoleTools.cpp
+  mecoin/src/Common/MemoryInputStream.cpp
+  mecoin/src/Common/PathTools.cpp
+  mecoin/src/Common/StdInputStream.cpp
+  mecoin/src/Common/StdOutputStream.cpp
+  mecoin/src/Common/StreamTools.cpp
+  mecoin/src/Common/StringOutputStream.cpp
+  mecoin/src/Common/StringView.cpp
+  mecoin/src/Common/VectorOutputStream.cpp
+  mecoin/src/crypto/blake256.c
+  mecoin/src/crypto/chacha8.c
+  mecoin/src/crypto/crypto-ops-data.c
+  mecoin/src/crypto/crypto-ops.c
+  mecoin/src/crypto/crypto.cpp
+  mecoin/src/crypto/groestl.c
+  mecoin/src/crypto/hash-extra-blake.c
+  mecoin/src/crypto/hash-extra-groestl.c
+  mecoin/src/crypto/hash-extra-jh.c
+  mecoin/src/crypto/hash-extra-skein.c
+  mecoin/src/crypto/hash.c
+  mecoin/src/crypto/jh.c
+  mecoin/src/crypto/keccak.c
+  mecoin/src/crypto/oaes_lib.c
+  mecoin/src/crypto/random.c
+  mecoin/src/crypto/skein.c
+  mecoin/src/crypto/slow-hash.c
+  mecoin/src/crypto/slow-hash.cpp
+  mecoin/src/crypto/tree-hash.c
+  mecoin/src/CryptoNoteCore/BlockchainIndices.cpp
+  mecoin/src/CryptoNoteCore/BlockchainMessages.cpp
+  mecoin/src/CryptoNoteCore/BlockIndex.cpp
+  mecoin/src/CryptoNoteCore/CoreConfig.cpp
+  mecoin/src/CryptoNoteCore/CryptoNoteBasic.cpp
+  mecoin/src/CryptoNoteCore/CryptoNoteTools.cpp
+  mecoin/src/CryptoNoteCore/Currency.cpp
+  mecoin/src/CryptoNoteCore/MinerConfig.cpp
+  mecoin/src/CryptoNoteCore/Transaction.cpp
+  mecoin/src/CryptoNoteCore/Account.cpp
+  mecoin/src/CryptoNoteCore/Blockchain.cpp
+  mecoin/src/CryptoNoteCore/Checkpoints.cpp
+  mecoin/src/CryptoNoteCore/CryptoNoteBasicImpl.cpp
+  mecoin/src/CryptoNoteCore/Core.cpp
+  mecoin/src/CryptoNoteCore/CryptoNoteFormatUtils.cpp
+  mecoin/src/CryptoNoteCore/CryptoNoteSerialization.cpp
+  mecoin/src/CryptoNoteCore/Difficulty.cpp
+  mecoin/src/CryptoNoteCore/IBlock.cpp
+  mecoin/src/CryptoNoteCore/Miner.cpp
+  mecoin/src/CryptoNoteCore/TransactionExtra.cpp
+  mecoin/src/CryptoNoteCore/TransactionPool.cpp
+  mecoin/src/CryptoNoteCore/TransactionPrefixImpl.cpp
+  mecoin/src/CryptoNoteCore/TransactionUtils.cpp
+  mecoin/src/InProcessNode/InProcessNode.cpp
+  mecoin/src/InProcessNode/InProcessNodeErrors.cpp
+  mecoin/src/NodeRpcProxy/NodeErrors.cpp
+  mecoin/src/NodeRpcProxy/NodeRpcProxy.cpp
+  mecoin/src/P2p/NetNodeConfig.cpp
+  mecoin/src/Serialization/BinaryInputStreamSerializer.cpp
+  mecoin/src/Serialization/BinaryOutputStreamSerializer.cpp
+  mecoin/src/Serialization/JsonInputValueSerializer.cpp
+  mecoin/src/Serialization/JsonOutputStreamSerializer.cpp
+  mecoin/src/Serialization/KVBinaryInputStreamSerializer.cpp
+  mecoin/src/Serialization/KVBinaryOutputStreamSerializer.cpp
+  mecoin/src/Serialization/SerializationOverloads.cpp
+  mecoin/src/Transfers/BlockchainSynchronizer.cpp
+  mecoin/src/Transfers/SynchronizationState.cpp
+  mecoin/src/Transfers/TransfersConsumer.cpp
+  mecoin/src/Transfers/TransfersContainer.cpp
+  mecoin/src/Transfers/TransfersSubscription.cpp
+  mecoin/src/Transfers/TransfersSynchronizer.cpp
+  mecoin/src/Wallet/LegacyKeysImporter.cpp
+  mecoin/src/Wallet/WalletAsyncContextCounter.cpp
+  mecoin/src/Wallet/WalletErrors.cpp
+  mecoin/src/WalletLegacy/KeysStorage.cpp
+  mecoin/src/WalletLegacy/WalletLegacy.cpp
+  mecoin/src/WalletLegacy/WalletHelper.cpp
+  mecoin/src/WalletLegacy/WalletLegacySerializer.cpp
+  mecoin/src/WalletLegacy/WalletLegacySerialization.cpp
+  mecoin/src/WalletLegacy/WalletTransactionSender.cpp
+  mecoin/src/WalletLegacy/WalletUnconfirmedTransactions.cpp
+  mecoin/src/WalletLegacy/WalletUserTransactionsCache.cpp
+  mecoin/src/System/ContextGroup.cpp
+  mecoin/src/System/Event.cpp
+  mecoin/src/System/EventLock.cpp
+  mecoin/src/System/InterruptedException.cpp
+  mecoin/src/System/Ipv4Address.cpp
+  mecoin/src/System/TcpStream.cpp
+  mecoin/src/HTTP/HttpRequest.cpp
+  mecoin/src/HTTP/HttpParser.cpp
+  mecoin/src/HTTP/HttpParserErrorCodes.cpp
+  mecoin/src/HTTP/HttpResponse.cpp
+  mecoin/src/Rpc/HttpClient.cpp
+  mecoin/src/Rpc/JsonRpc.cpp
+  mecoin/src/P2p/NetNode.cpp
+  mecoin/src/P2p/LevinProtocol.cpp
+  mecoin/src/P2p/NetNodeConfig.cpp
+  mecoin/src/P2p/PeerListManager.cpp
+  mecoin/src/CryptoNoteProtocol/CryptoNoteProtocolHandler.cpp
+  mecoin/src/Logging/ILogger.cpp
+  mecoin/src/Logging/LoggerGroup.cpp
+  mecoin/src/Logging/CommonLogger.cpp
+  mecoin/src/Logging/LoggerManager.cpp
+  mecoin/src/Logging/FileLogger.cpp
+  mecoin/src/Logging/StreamLogger.cpp
+  mecoin/src/Logging/ConsoleLogger.cpp
+  mecoin/src/Logging/LoggerMessage.cpp
+  mecoin/src/Logging/LoggerRef.cpp
+  mecoin/src/BlockchainExplorer/BlockchainExplorer.cpp
+  mecoin/src/BlockchainExplorer/BlockchainExplorerDataBuilder.cpp
+  mecoin/src/BlockchainExplorer/BlockchainExplorerErrors.cpp
 )
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
@@ -184,7 +184,7 @@ if (WIN32)
 	message(FATAL_ERROR "Only MSVC is supported on this platform")
   endif ()
   add_definitions(/D_CRT_SECURE_NO_WARNINGS /D_WIN32_WINNT=0x0600 /DSTATICLIB)
-  include_directories(danicoin/src/platform/msc)
+  include_directories(mecoin/src/platform/msc)
 
   set(PLATFORM_DIR Windows)
   set(BUILD_PLATFORM WIN32)
@@ -192,13 +192,13 @@ if (WIN32)
   set(QTMAIN Qt5::WinMain)
 
 elseif (UNIX)
-  set(CRYPTONOTE_SOURCES ${CRYPTONOTE_SOURCES} danicoin/external/miniupnpc/minissdpc.c)
+  set(CRYPTONOTE_SOURCES ${CRYPTONOTE_SOURCES} mecoin/external/miniupnpc/minissdpc.c)
   if (APPLE)
     enable_language(ASM)
     file(GLOB_RECURSE OBJC_SOURCES src/*.mm)
     set(SOURCES ${SOURCES} ${OBJC_SOURCES})
     set(PLATFORM_DIR OSX)
-    set(MACOSX_BUNDLE_INFO_STRING "Danicoin GUI wallet")
+    set(MACOSX_BUNDLE_INFO_STRING "Mecoin GUI wallet")
     set(MACOSX_BUNDLE_LONG_VERSION_STRING "${VERSION_VERSION}.${VERSION_MINOR}.${VERSION_PATCH}")
     set(MACOSX_BUNDLE_BUNDLE_NAME CryptonoteWallet)
     set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${VERSION_VERSION}.${VERSION_MINOR}.${VERSION_PATCH}")
@@ -228,8 +228,8 @@ elseif (UNIX)
   endif (APPLE)
 endif ()
 
-include_directories(danicoin/src/Platform/${PLATFORM_DIR})
-file(GLOB PLATFORM_SOURCES danicoin/src/Platform/${PLATFORM_DIR}/System/*)
+include_directories(mecoin/src/Platform/${PLATFORM_DIR})
+file(GLOB PLATFORM_SOURCES mecoin/src/Platform/${PLATFORM_DIR}/System/*)
 set(CRYPTONOTE_SOURCES ${CRYPTONOTE_SOURCES} ${PLATFORM_SOURCES})
 
 add_library(${CRYPTONOTE_LIB} STATIC ${CRYPTONOTE_SOURCES})
